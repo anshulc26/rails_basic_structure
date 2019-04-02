@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'therubyracer', platforms: :ruby
 
+# Code Quality
+gem 'rubocop', '~> 0.52.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -51,11 +54,31 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Preview email in the browser
+  gem 'letter_opener'
+
+  # Kill n+1 queries, unused eager loading
+  gem 'bullet'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
+  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'headless'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'ffaker'
+  gem 'email_spec'
+  gem 'rspec_junit_formatter'
+  gem 'timecop'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
