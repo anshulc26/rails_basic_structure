@@ -1,0 +1,13 @@
+<%= link_to t('tours.title'), tours_path %> / <%= t('tours.book_tour') %>
+
+<%= form_for @booking, url: create_booking_path(@tour), methos: :post do |f| %>
+  <%= f.hidden_field :tour_id, value: @tour.id %>
+
+  <%= f.label :number_of_people %>
+  <%= f.number_field :number_of_people, required: true %><br/>
+
+  <%= f.label :contact_email %>
+  <%= f.email_field :contact_email, required: true %><br/>
+
+  <%= f.submit %>
+<% end %>

@@ -28,6 +28,13 @@ gem 'therubyracer', platforms: :ruby
 # Code Quality
 gem 'rubocop', '~> 0.52.1'
 
+gem 'devise', '~> 4.6.2'
+gem 'ratyrate'
+gem 'rolify', '~> 5.2.0'
+gem 'carrierwave'
+gem 'ransack'
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

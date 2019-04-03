@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsBasicStructure</title>
+    <title><%= t('title') %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= link_to t('home'), root_path %>
+      <%= link_to t('tours.title'), tours_path %>
+      <span class="float-right">
+        <% if current_user %>
+          <%= link_to t('users.sign_out'), destroy_user_session_path, method: :delete %>
+          <% if current_user.has_role? :guide %>
+            <%= link_to t('tours.my_tours'), my_tours_path %>
+          <% end %>
+        <% else %>
+          <%= link_to t('users.sign_in'), new_user_session_path %> or <%= link_to t('users.sign_up'), new_user_registration_path %>
+        <% end %>
+      </span>
+    </header>
+
+    <main id="site-content" role="main">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

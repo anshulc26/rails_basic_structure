@@ -1,0 +1,34 @@
+<%= t('tours.my_tours') %> - <%= link_to t('tours.create_tour'), new_tour_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="2"><%= sort_link @search, :title, 'Title' %></th>
+      <th><%= sort_link @search, :location, 'Location' %></th>
+      <th><%= sort_link @search, :start_date, 'Start date' %></th>
+      <th><%= t('tours.actions') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- @tours.each do |tour| %>
+      <tr>
+        <td>
+          <% if tour.photos.present? %>
+            <%= image_tag tour.photos.first.url, width: 100, height: 100 %>
+          <% end %>
+        </td>
+        <td><%= link_to tour.title, edit_tour_path(tour) %></td>
+        <td><%= tour.location %></td>
+        <td><%= tour.start_date.strftime('%m-%d-%Y %d:%m') %></td>
+        <td>
+          <%= link_to 'Show', tour_path(tour) %>
+          <%= link_to 'Edit', edit_tour_path(tour) %>
+          <%= link_to 'Delete', tour_path(tour), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr/>
+<%= paginate @tours %>
+

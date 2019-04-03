@@ -1,0 +1,17 @@
+<%= link_to t('tours.tours'), tours_path %> / <%= @tour.title %>
+
+<% if current_user.blank? || (current_user.present? && !current_user.has_role?(:guide)) %>
+  <%= link_to t('tours.book'), booking_tour_path(@tour) %>
+<% end %>
+
+<div>Title: <%= @tour.title %></div>
+<div>Location: <%= @tour.location %></div>
+<div>Start Date: <%= @tour.start_date.strftime('%m-%d-%Y %d:%m') %></div>
+<div>Description: <%= @tour.description %></div>
+<div>
+  Photos:
+  <%- @tour.photos.each do |photo| %>
+    <%= image_tag photo.url, width: 100, height: 100 %>
+  <% end %>
+</div>
+
