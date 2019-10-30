@@ -28,7 +28,7 @@ gem 'therubyracer', platforms: :ruby
 # Code Quality
 gem 'rubocop', '~> 0.52.1'
 
-gem 'devise', '~> 4.6.2'
+gem 'devise', '~> 4.7.1'
 gem 'ratyrate'
 gem 'rolify', '~> 5.2.0'
 gem 'carrierwave'
